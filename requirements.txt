@@ -1,0 +1,17 @@
+pandas
+numpy
+joblib
+pyyaml
+scipy
+scikit-learn
+python-dateutil
+pytz
+tqdm
+flask
+pyngrok
+tensorflow
+xgboost
+huggingface_hub
+torch
+transformers
+git+https://github.com/amazon-science/chronos-forecasting.git

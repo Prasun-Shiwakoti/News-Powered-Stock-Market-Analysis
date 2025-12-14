@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LSTM Stock Prediction Demo</title>
+		<link rel="stylesheet" href="./styles.css" />
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="main-content">
+				<!-- Sidebar Controls -->
+				<aside class="sidebar">
+					<div class="controls-section">
+						<h2>Demo Controls</h2>
+
+						<div class="control-group">
+							<div class="select-row">
+								<div class="select-item">
+									<label for="tickerSelect">Company:</label>
+									<select id="tickerSelect" class="select-input"></select>
+								</div>
+								<div class="select-item">
+									<label for="modelSelect">Model:</label>
+									<select id="modelSelect" class="select-input">
+										<option value="xgb">XGBoost</option>
+										<option value="lstm">LSTM</option>
+										<option value="ridge">Ridge</option>
+										<option value="chronos">Chronos</option>
+									</select>
+								</div>
+							</div>
+							<div class="status" id="modelStatus">
+								<span class="status-indicator loading"></span>
+								<span class="status-text">Loading model...</span>
+							</div>
+						</div>
+
+						<!-- Trading Section -->
+						<div class="trading-section">
+							<h3>Trading Panel</h3>
+							<div class="balance-info">
+								<p>
+									<strong>Total Balance:</strong> $<span id="totalMoney"
+										>10000</span
+									>
+								</p>
+								<p>
+									<strong>Money in Stocks:</strong> $<span id="moneyInStocks"
+										>0</span
+									>
+								</p>
+								<p>
+									<strong>Stocks Owned:</strong> <span id="stocksOwned">0</span>
+								</p>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<div class="ai-suggestion-box" id="aiSuggestionBox">
+								<p><strong>💡 AI Suggestion:</strong></p>
+								<p id="aiSuggestionText">Analyzing...</p>
+							</div>
+
+							<div class="trade-buttons">
+								<button id="buyBtn" class="btn btn-buy" disabled>🟢 Buy</button>
+								<button id="sellBtn" class="btn btn-sell" disabled>
+									🔴 Sell
+								</button>
+								<button id="nextBtn" class="btn btn-next" disabled>
+									➡️ Next Day
+								</button>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<button id="resetBtn" class="btn btn-reset">🔄 Reset Demo</button>
+						</div>
+					</div>
+				</aside>
+
+				<!-- Chart Area -->
+				<main class="chart-area">
+					<div class="chart-header">
+						<h2>Prediction Chart</h2>
+						<div class="chart-info">
+							<span id="currentDay">Day: </span>
+							<span id="totalPredictions">Predictions: </span>
+						</div>
+					</div>
+					<div id="chart" class="chart-container"></div>
+					<div class="loading-overlay" id="loadingOverlay">
+						<div class="spinner"></div>
+						<p>Loading data...</p>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<script src="./app.js"></script>
+	</body>
+</html>
